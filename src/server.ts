@@ -1,7 +1,7 @@
 // import cookieParser from 'cookie-parser';
 // import StatusCodes from 'http-status-codes';
 // import { Server as SocketIo } from 'socket.io';
-import express, { NextFunction, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import http from 'http';
 
 
