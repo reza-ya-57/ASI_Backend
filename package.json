@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --build tsconfig.json",
-    "start:dev": "nodemon"
+    "start:dev": "nodemon",
+    "start": "node ./build/index.js"
   },
-
   "nodemonConfig": {
     "watch": [
       "src"
@@ -19,31 +19,27 @@
     ],
     "exec": "./node_modules/.bin/ts-node --files -r tsconfig-paths/register ./src"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/reza-ya-57/ASI_Backend.git"
   },
-
   "author": "reza",
   "license": "ISC",
-
   "bugs": {
     "url": "https://github.com/reza-ya-57/ASI_Backend/issues"
   },
-
   "homepage": "https://github.com/reza-ya-57/ASI_Backend#readme",
-
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "express": "^4.18.1",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "mssql": "^8.1.2"
   },
-
   "devDependencies": {
     "@types/cookie-parser": "^1.4.3",
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.8",
+    "@types/mssql": "^8.0.3",
     "@types/node": "^18.6.2",
     "@typescript-eslint/parser": "^5.31.0",
     "eslint": "^8.20.0",

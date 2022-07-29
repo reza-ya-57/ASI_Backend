@@ -29,7 +29,11 @@ type TDecoded = string | JwtPayload | undefined;
  */
 function sign(data: JwtPayload): Promise<string> {
     return new Promise((resolve, reject) => {
-        var privateKEY  = fs.readFileSync(path.dirname('./private.key'), 'utf8');
+        var pathtest = path.dirname('./private.key');
+        console.log(pathtest)
+        console.log(path.dirname('./private.key'))
+        var privateKEY  = fs.readFileSync(path.join(__dirname , './private.key'), 'utf8');
+        // var privateKEY  = fs.readFileSync(path.dirname('./private.key'), 'utf8');
         jsonwebtoken.sign(data, privateKEY, { algorithm: 'RS256' }, (err, token) => {
             err ? reject(err) : resolve(token || '');
         });

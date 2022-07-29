@@ -1,7 +1,5 @@
-// import cookieParser from 'cookie-parser';
-// import StatusCodes from 'http-status-codes';
-// import { Server as SocketIo } from 'socket.io';
 import express, { Request, Response } from 'express';
+import BaseRouter from './routes/api';
 import http from 'http';
 
 
@@ -14,6 +12,8 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+app.use('/api' , BaseRouter);
 
 // Chat page
 app.get('/test', (req: Request, res: Response) => {
