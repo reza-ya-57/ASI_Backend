@@ -1,6 +1,10 @@
 import jsonwebtoken, { JwtPayload } from 'jsonwebtoken';
 import fs from 'fs';
 import path from 'path';
+import dotenv from 'dotenv';
+
+
+dotenv.config()
 
 
 
@@ -34,7 +38,7 @@ function sign(data: JwtPayload): Promise<string> {
         console.log(path.dirname('./private.key'))
         var privateKEY  = fs.readFileSync(path.join(__dirname , './private.key'), 'utf8');
         // var privateKEY  = fs.readFileSync(path.dirname('./private.key'), 'utf8');
-        jsonwebtoken.sign(data, privateKEY, { algorithm: 'RS256' }, (err, token) => {
+        jsonwebtoken.sign(data, process.env.PRIVATE_KEY , { algorithm: 'RS256' }, (err, token) => {
             err ? reject(err) : resolve(token || '');
         });
     });

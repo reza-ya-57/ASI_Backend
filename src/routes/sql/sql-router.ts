@@ -1,5 +1,8 @@
 import { Router, Request, Response } from 'express';
 import sql from 'mssql';
+import dotenv from 'dotenv';
+
+dotenv.config()
 
 
 // Chat router
@@ -21,7 +24,7 @@ router.get(p.fetch, async (req: Request, res: Response) => {
       server: 'localhost',
       user: 'sa',
       password: 'reza9045235360',
-      database: 'BikeStores',
+      database: 'SI_Dashboard',
       pool: {
         max: 10,
         min: 0,
@@ -35,7 +38,7 @@ router.get(p.fetch, async (req: Request, res: Response) => {
     try {
       // make sure that any items are correctly URL encoded in the connection string
       await sql.connect(config)
-      const result = await sql.query`SELECT * FROM production.brands`
+      const result = await sql.query`SELECT *FROM [SI_Dashboard].[Auth].[User]`
       console.dir(result)
       res.json(result.recordset[0])
      } catch (err) {

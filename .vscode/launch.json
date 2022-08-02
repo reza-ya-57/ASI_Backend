@@ -13,7 +13,8 @@
             ],
             "runtimeArgs": [
                 "-r",
-                "ts-node/register"
+                "ts-node/register",
+                "--trace-deprecation"
             ],
             "cwd": "${workspaceRoot}",
             "protocol": "inspector",

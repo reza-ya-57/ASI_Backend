@@ -1,6 +1,9 @@
 import express, { Request, Response } from 'express';
 import BaseRouter from './routes/api';
+import cors from 'cors';
 import http from 'http';
+
+
 
 
 const app = express();
@@ -12,7 +15,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-
+app.use(cors());
 app.use('/api' , BaseRouter);
 
 // Chat page
