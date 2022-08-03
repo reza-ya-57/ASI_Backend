@@ -23,18 +23,6 @@ router.post(p.login, async (req: Request, res: Response) => {
     if (!(userName && password)) {
         throw new Error('invalid');
     }
-    // try {
-    //     // make sure that any items are correctly URL encoded in the connection string
-    //     await sql.connect('Server=192.168.5.54,1433;Database=ASI;User Id=sa;Password=reza@1618033988;Encrypt=true')
-    //     const result = await sql.query`EXEC [Base].[LogIn] @UserName = @${userName} , @${password} = '123581321'`
-    //     console.log(result)
-    //     console.log(result)
-    //     console.log(result)
-    //     // const result = await sql.query`select * from mytable where id = ${value}`
-    //     // console.dir(result)
-    // } catch (err) {
-    //     // ... error checks
-    // }
 
     var config = {
         server: '192.168.5.54',
