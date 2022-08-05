@@ -15,6 +15,7 @@ const jwtNotPresentErr = 'JWT not present in signed cookie.';
  * @returns 
  */
 export async function authMw(req: Request, res: Response, next: NextFunction) {
+    
     try {
         // Get json-web-token
         // const jwt = req.signedCookies[cookieProps.key];

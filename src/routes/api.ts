@@ -9,7 +9,7 @@ const apiRouter = Router();
 
 // Add api routes
 apiRouter.use('/auth', authRouter);
-apiRouter.use('/sql' , sqlRouter);
+apiRouter.use('/sql' , authMw , sqlRouter);
 
 // Export default
 export default apiRouter;

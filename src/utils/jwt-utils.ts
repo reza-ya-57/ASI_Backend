@@ -14,9 +14,8 @@ const errors = {
 } as const;
 
 // Constants
-const secret = (process.env.JWT_SECRET || 'test'),
+const secret = (process.env.PRIVATE_KEY || 'test'),
     options = {
-        expiresIn: process.env.COOKIE_EXP,
         algorithm: 'RS256'
     };
 
@@ -33,14 +32,11 @@ type TDecoded = string | JwtPayload | undefined;
  */
 function sign(data: JwtPayload): Promise<string> {
     return new Promise((resolve, reject) => {
-        var pathtest = path.dirname('./private.key');
-        console.log(pathtest)
-        console.log(path.dirname('./private.key'))
-        var privateKEY  = fs.readFileSync(path.join(__dirname , './private.key'), 'utf8');
-        // var privateKEY  = fs.readFileSync(path.dirname('./private.key'), 'utf8');
+
         jsonwebtoken.sign(data, process.env.PRIVATE_KEY , { algorithm: 'RS256' }, (err, token) => {
             err ? reject(err) : resolve(token || '');
         });
+
     });
 }
 
@@ -51,8 +47,10 @@ function sign(data: JwtPayload): Promise<string> {
  * @param jwt
  */
 function decode(jwt: string): Promise<TDecoded> {
+    
     return new Promise((res, rej) => {
-        jsonwebtoken.verify(jwt, secret, (err, decoded) => {
+
+        jsonwebtoken.verify(jwt, process.env.PUBLIC_KEY , (err, decoded) => {
             return err ? rej(errors.validation) : res(decoded);
         });
     });

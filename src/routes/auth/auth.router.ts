@@ -25,31 +25,30 @@ router.post(p.login, async (req: Request, res: Response) => {
     }
 
     var config = {
-        server: '192.168.5.54',
-        user: 'CCMSAdmin',
-        password: '1213141516171819',
-        database: 'ASI',
+        server: 'rezayari.ir',
+        user: 'sa',
+        password: 'reza@1618033988',
+        database: 'SI_Dashboard',
         pool: {
-            max: 10,
-            min: 0,
-            idleTimeoutMillis: 30000
+          max: 10,
+          min: 0,
+          idleTimeoutMillis: 30000
         },
         options: {
-            trustServerCertificate: true, // change to true for local dev / self-signed certs
-            encrypt: false,
+          trustServerCertificate: true // change to true for local dev / self-signed certs
         }
-    }
+      }
 
     try {
         // make sure that any items are correctly URL encoded in the connection string
         await sql.connect(config)
-        const result = await sql.query`EXEC [Base].[LogIn] @UserName = ${userName} , @password = ${password}`
+        const result = await sql.query`EXEC [Auth].[LogIn] @UserName = ${userName} , @password = ${password}`
         console.dir(result)
-        console.log(result.recordset)
+        console.log(result.recordset[0])
 
         if (result) {
             // Get jwt
-            const jwt = await authService.login(userName, password);
+            const jwt = await authService.login(result.recordset[0]);
 
             return res.status(200).json({
                 ...result.recordset[0],

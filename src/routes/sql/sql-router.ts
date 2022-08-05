@@ -20,10 +20,11 @@ export const p = {
  */
 router.get(p.fetch, async (req: Request, res: Response) => {
     // config for your database
+    console.log(req)
     var config = {
-      server: 'localhost',
+      server: 'rezayari.ir',
       user: 'sa',
-      password: 'reza9045235360',
+      password: 'reza@1618033988',
       database: 'SI_Dashboard',
       pool: {
         max: 10,
@@ -38,7 +39,7 @@ router.get(p.fetch, async (req: Request, res: Response) => {
     try {
       // make sure that any items are correctly URL encoded in the connection string
       await sql.connect(config)
-      const result = await sql.query`SELECT *FROM [SI_Dashboard].[Auth].[User]`
+      const result = await sql.query`SELECT * FROM [SI_Dashboard].[Auth].[User]`
       console.dir(result)
       res.json(result.recordset[0])
      } catch (err) {
