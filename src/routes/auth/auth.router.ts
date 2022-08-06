@@ -18,17 +18,17 @@ export const p = {
 router.post(p.login, async (req: Request, res: Response) => {
     // Check email and password present
 
-    const { userName, password } = req.body;
+    const { username, password } = req.body;
 
-    if (!(userName && password)) {
-        throw new Error('invalid');
+    if (!(username && password)) {
+        throw new Error('you should send both username and password');
     }
 
     var config = {
-        server: 'rezayari.ir',
-        user: 'sa',
-        password: 'reza@1618033988',
-        database: 'SI_Dashboard',
+        server: '192.168.5.54',
+        user: 'CCMSAdmin',
+        password: '1213141516171819',
+        database: 'ASI',
         pool: {
           max: 10,
           min: 0,
@@ -42,7 +42,7 @@ router.post(p.login, async (req: Request, res: Response) => {
     try {
         // make sure that any items are correctly URL encoded in the connection string
         await sql.connect(config)
-        const result = await sql.query`EXEC [Auth].[LogIn] @UserName = ${userName} , @password = ${password}`
+        const result = await sql.query`EXEC [Base].[LogIn] @UserName = ${username} , @password = ${password}`
         console.dir(result)
         console.log(result.recordset[0])
 

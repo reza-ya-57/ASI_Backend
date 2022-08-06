@@ -19,13 +19,12 @@ export const p = {
  * Connect to socket room.
  */
 router.get(p.fetch, async (req: Request, res: Response) => {
-    // config for your database
-    console.log(req)
+
     var config = {
-      server: 'rezayari.ir',
-      user: 'sa',
-      password: 'reza@1618033988',
-      database: 'SI_Dashboard',
+      server: '192.168.5.54',
+      user: 'CCMSAdmin',
+      password: '1213141516171819',
+      database: 'ASI',
       pool: {
         max: 10,
         min: 0,
@@ -39,7 +38,7 @@ router.get(p.fetch, async (req: Request, res: Response) => {
     try {
       // make sure that any items are correctly URL encoded in the connection string
       await sql.connect(config)
-      const result = await sql.query`SELECT * FROM [SI_Dashboard].[Auth].[User]`
+      const result = await sql.query`SELECT * FROM [ASI].[Base].[Province]`
       console.dir(result)
       res.json(result.recordset[0])
      } catch (err) {
