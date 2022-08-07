@@ -1,7 +1,13 @@
 import { Request, Response, Router } from 'express';
 import authService from '../../services/auth-service/auth-service';
-import sql from 'mssql';
+// validate
 import { LoginSchema } from '../../models/auth/authSchema';
+// error
+import { DBError } from '../../errors/DbError/dberror';
+import sql from 'mssql';
+import fs from 'fs';
+import domain from 'domain'
+import path from 'path';
 
 
 // Constants
@@ -28,11 +34,19 @@ const config = {
     }
 }
 
+
+
+
 // Login a user.
-router.post(p.login, async (req: Request, res: Response) => {
-    // Check email and password present
+router.
+post(p.login, async (req: Request, res: Response) => {
+
     try {
-        const { value } = LoginSchema.validate({ ...req.body })
+        const { error , value } = LoginSchema.validate({ ...req.body });
+        if (error) {
+            Object.assign(error , { statusCode: 400 });
+            throw error;
+        };
         const { username, password } = value;
         
         await sql.connect(config)
@@ -44,32 +58,18 @@ router.post(p.login, async (req: Request, res: Response) => {
                 token: jwt
             });
         } else {
-            throw new Error('نام کاربری یا پسورد اشتباه است')
+            throw new DBError('نام کاربری یا پسورد اشتباه است')
         }
     }
     catch (err) {
-        return res.status(500).json({
+        // console.log(err)
+        // fs.writeFile('../../logs/log.txt' , err.message , err => {
+        //     console.log(err)
+        // })
+        return res.status(err?.statusCode).json({
             message: err?.message
         })
     }
-
-
-
-
-    // try {
-    //     // make sure that any items are correctly URL encoded in the connection string
-
-    //     }
-    //     // res.json(result.recordset)
-    // } catch (err) {
-    //     // ... error checks
-    //     return res.status(401).json({
-    //         isSuccess: true,
-    //         message: 'somthing went wrong'
-    //     })
-    // }
-
-
 
 });
 

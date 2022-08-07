@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
-app.options('*', cors())
+app.options('*', cors());
 app.use('/api' , BaseRouter);
 
 // Chat page
@@ -32,5 +32,10 @@ app.get('/test', (req: Request, res: Response) => {
 
 
 const server = http.createServer(app);
+
+process.on('uncaughtException' , (error , source) => {
+    console.log(`uncaughtException: ${error}`);
+    console.log(`source: ${source}`);
+});
 
 export default server;
