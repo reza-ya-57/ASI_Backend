@@ -32,7 +32,6 @@ export async function authMw(req: Request, res: Response, next: NextFunction) {
         // Make sure user role is an admin
         
         const clientData = await jwtUtil.decode(jwt);
-        console.log(clientData)
         if (!!clientData) {
             res.locals.sessionUser = clientData;
             next();

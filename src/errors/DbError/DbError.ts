@@ -8,6 +8,5 @@ export class DBError extends Error {
         super(message);
 
         Object.setPrototypeOf(this, DBError.prototype);
-        console.log(this.stack)
     }
 } 
