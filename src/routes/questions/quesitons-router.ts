@@ -12,28 +12,6 @@ const router = Router();
 export const p = {
     equipment: '/get-equipment',
 } as const;
-  // if (row.ParentId === null) {
-        //     if (!result.parent) {
-        //         result.parent = {
-        //             id: row.Id,
-        //             type: row.QuestionTypeId,
-        //             number: row.Id,
-        //             isEdited: false,
-        //             isAnswered: false,
-        //             isMandatory: true,
-        //             status: 'on',
-        //             title: row.Caption
-        //         }
-        //     }
-        // }
-        // else {
-        //     let childsId = [];
-        //     if (!childsId.includes(row.childsId)) {
-        //         result.childs.push({
-
-        //         })
-        //     }
-        // }
 
 const takeOutQuesitonsOptions = (questionRow) => {
     const result: any = {
@@ -91,7 +69,7 @@ const takeOutQuesitonsOptions = (questionRow) => {
                     isAnswered: false,
                     isMandatory: true,
                     status: 'on',
-                    title: row.Caption,
+                    title: row.ChildButtonCaption,
                     choices: {
                         values: [
                             {
@@ -123,27 +101,10 @@ const takeOutQuesitonsOptions = (questionRow) => {
 }
 
 const formattingArrayRowQuesitons = (questionsRow) => {
-    // take questions out to the two level parrent and childs
+
     return questionsRow.map((row: any) => {
         return takeOutQuesitonsOptions(row)
     })
-    // const formattedQuesiton = takeOutQuesitonsOptions(questionRow)
-    // const result = {
-    //     ...levelformatted.parent,
-    //     subQuestions: levelformatted.childs
-    // }
-
-    // levelformatted.childs.forEach
-    // console.log(result)
-
-    // take formatted quesiton object and take in to the hierachy level formatt
-
-
-    // make formatted object quesiton from quesitons row
-    // take quesiton level and quesiton row
-
-
-
 
 }
 
