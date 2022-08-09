@@ -3,7 +3,7 @@ import authService from '../../services/auth-service/auth-service';
 // validate
 import { LoginSchema } from '../../models/auth/authSchema';
 // error
-import { DBError } from '../../errors/DbError/dberror';
+import { DBError } from '../../errors/DbError/DbError';
 // logger
 import { logger } from '../../logs/winston/winston.config';
 
