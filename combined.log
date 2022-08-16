@@ -28,3 +28,7 @@
 {"level":"error","message":"undefined","service":"user-service"}
 {"level":"error","message":"undefined","service":"user-service"}
 {"level":"error","message":"undefined","service":"user-service"}
+{"level":"error","message":"unhandledRejection","service":"user-service"}
+{"level":"error","message":"unhandledRejection","service":"user-service"}
+{"level":"error","message":"unhandledRejection","service":"user-service"}
+{"level":"error","message":"unhandledRejection","service":"user-service"}
