@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import sql from 'mssql';
 import dotenv from 'dotenv';
+import { logger } from '../../logs/winston/winston.config';
 
 dotenv.config()
 
@@ -21,6 +22,7 @@ const takeOutQuesitonsOptions = (questionRow) => {
     const qId = [];
     const qChildId = [];
     questionRow.forEach((row: any) => {
+        logger.error(`${console.count('reza')}`)
         if (row.ParentId === null) {
             if (!qId.includes(row.Id)) {
                 qId.push(row.Id)
