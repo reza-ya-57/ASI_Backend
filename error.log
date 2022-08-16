@@ -1,2 +1,7 @@
 {"level":"error","message":"RequestError: Could not find stored procedure 'Base.LogIn'.\n    at handleError (E:\\dev\\back\\node\\ASI_BackEnd\\node_modules\\mssql\\lib\\tedious\\request.js:384:15)\n    at Connection.emit (node:events:527:28)\n    at Connection.emit (node:domain:475:12)\n    at Connection.emit (E:\\dev\\back\\node\\ASI_BackEnd\\node_modules\\tedious\\src\\connection.ts:1906:18)\n    at RequestTokenHandler.onErrorMessage (E:\\dev\\back\\node\\ASI_BackEnd\\node_modules\\tedious\\src\\token\\handler.ts:388:21)\n    at Readable.<anonymous> (E:\\dev\\back\\node\\ASI_BackEnd\\node_modules\\tedious\\src\\token\\token-stream-parser.ts:23:7)\n    at Readable.emit (node:events:527:28)\n    at Readable.emit (node:domain:475:12)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)","service":"user-service"}
 {"level":"error","message":"unhandledRejection","service":"user-service"}
+
+{"level":"error","message":"unhandledRejection","service":"user-service"}
+{"level":"error","message":"unhandledRejection","service":"user-service"}
+{"level":"error","message":"unhandledRejection","service":"user-service"}
+{"level":"error","message":"unhandledRejection","service":"user-service"}
