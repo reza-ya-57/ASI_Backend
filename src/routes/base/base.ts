@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import sql from 'mssql';
 import dotenv from 'dotenv';
 import jwtUtils from '../../utils/jwt-utils';
-import { DBError } from '../../errors/DbError/dberror';
+import { DBError } from '../../errors/DbError/dbError';
 import { logger } from '../../logs/winston/winston.config';
 
 dotenv.config()
